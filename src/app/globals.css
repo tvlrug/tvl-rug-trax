@@ -1,0 +1,189 @@
+@import "tailwindcss";
+:root {color-scheme:dark; --background:#0b111b;--panel:#121c29;--panel2:#172434;--border:#283547;--muted:#9eafc1;--red:#d93a3a}
+*{box-sizing:border-box} body{margin:0;background:var(--background);color:#edf3fa;font-family:Arial,Helvetica,sans-serif}
+a{text-decoration:none} a:focus-visible{outline:2px solid #ff7777;outline-offset:4px;border-radius:4px}
+.shell{min-height:100vh;display:grid;grid-template-columns:258px 1fr}.sidebar{background:#0f1825;border-right:1px solid var(--border);padding:24px 17px}.brand{display:flex;align-items:center;gap:13px;padding:4px 9px 28px;border-bottom:1px solid var(--border)}.brandmark{background:var(--red);color:white;width:43px;height:43px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:24px}.brand strong{letter-spacing:.11em;font-size:19px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.navlabel{color:#8b9baf;font-size:11px;font-weight:bold;letter-spacing:.12em;padding:28px 12px 12px}.navlink{display:flex;align-items:center;gap:12px;color:#b8c7d8;padding:12px;border-radius:10px;font-size:14px;margin-bottom:5px}.navlink:hover,.navlink.active{background:#263142;color:#fff}.navlink.active{box-shadow:inset 3px 0 0 var(--red)}.asidefoot{margin:35px 9px;color:#91a1b4;font-size:12px;line-height:1.7}.main{min-width:0}.topbar{height:72px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 34px;background:#101927}.topbar span{font-size:13px;color:var(--muted)}.topbar b{font-size:13px;color:#d5e1ee}.content{max-width:1250px;margin:0 auto;padding:40px 34px}.eyebrow{color:#f26e6e;letter-spacing:.15em;text-transform:uppercase;font-weight:700;font-size:11px}.title{font-size:clamp(28px,3vw,40px);margin:13px 0 8px;letter-spacing:-.035em;font-weight:750}.subtitle{color:var(--muted);margin:0;line-height:1.65;max-width:780px}.divider{height:1px;background:var(--border);margin:30px 0}.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{border:1px solid var(--border);background:linear-gradient(145deg,var(--panel),#101925);padding:23px;border-radius:14px;min-height:180px}.card h3{font-size:15px;margin:0 0 14px}.card p{font-size:13px;line-height:1.65;color:var(--muted);margin:0}.tag{font-size:11px;border:1px solid #654244;color:#ffa3a3;padding:6px 9px;border-radius:100px;display:inline-block;margin-top:20px}.notice{margin-top:23px;background:#1a2432;border:1px solid #39495c;border-left:3px solid var(--red);padding:18px 20px;border-radius:11px;color:#c8d5e3;font-size:13px;line-height:1.7}.info{display:flex;align-items:center;gap:9px}.topbrand{color:#f2f5f9;font-weight:bold}.mobileHeader{display:none}
+@media(max-width:950px){.shell{grid-template-columns:210px 1fr}.sidebar{padding:20px 10px}.topbar{padding:0 20px}.content{padding:30px 20px}.cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:670px){.shell{display:block}.sidebar{border-right:0;border-bottom:1px solid var(--border);padding:13px}.brand{padding:3px 4px 13px}.navlabel,.asidefoot{display:none}.nav{display:flex;overflow-x:auto;gap:5px;padding-top:12px}.navlink{white-space:nowrap;font-size:12px;padding:10px}.topbar{height:54px}.content{padding:25px 17px}.cardgrid{grid-template-columns:1fr}.card{min-height:130px}.topbar b{display:none}}
+
+/* 09B authentication components: same visual identity as 09A */
+.loginpage{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 0%,#18283b 0%,#0b111b 58%)}
+.loginbox{width:min(100%,480px);border:1px solid var(--border);background:linear-gradient(145deg,#132033,#101925);padding:36px;border-radius:17px;box-shadow:0 18px 60px #0005}
+.loginbrand{display:flex;align-items:center;gap:14px;padding-bottom:23px;border-bottom:1px solid var(--border);margin-bottom:26px}
+.loginbrand strong{font-size:22px;letter-spacing:.12em}.loginbrand small{display:block;color:var(--muted);font-size:10px;margin-top:5px;letter-spacing:.05em}
+.loginform{margin-top:28px;display:flex;flex-direction:column;gap:11px}.loginform label{font-size:13px;font-weight:600;color:#c9d6e4}
+.loginform input{background:#0b1522;color:white;border:1px solid #415064;border-radius:9px;font:inherit;padding:14px;margin-bottom:12px}
+.loginform input:focus-visible{outline:2px solid #ee7777;outline-offset:1px}
+.loginbutton{background:var(--red);color:white;border:0;padding:14px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}.loginbutton:disabled{opacity:.7;cursor:wait}
+.loginerror{font-size:13px;color:#ffb5b5;background:#381c23;border:1px solid #8f3746;border-radius:8px;padding:12px}
+.loginfooter{font-size:12px;color:var(--muted);margin-top:26px;line-height:1.7}
+.logoutbutton{background:transparent;border:1px solid #435166;color:#d2dfed;border-radius:9px;padding:10px 14px;margin:18px 10px 0;cursor:pointer}
+.logoutbutton:hover{border-color:var(--red);color:white}
+
+
+/* TRAX Build 09F.1 — visual consistency layer.
+   Additive only: no reporting, navigation, authentication or data changes. */
+
+:root {
+  --trax-focus: #ff848b;
+  --trax-row-border: #36465a;
+  --trax-control-bg: #111e2d;
+}
+
+/* Smooth, consistent navigation without altering active-route logic. */
+.navlink {
+  transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+  min-height: 43px;
+}
+.navlink.active {
+  background: #28384b;
+  font-weight: 700;
+}
+.navlink:focus-visible,
+.logoutbutton:focus-visible,
+.loginbutton:focus-visible,
+.content button:focus-visible,
+.content input:focus-visible,
+.content select:focus-visible {
+  outline: 2px solid var(--trax-focus);
+  outline-offset: 3px;
+}
+
+/* Consistent forms: applies to reporting filters while respecting inline styles. */
+.content form label { color: #d3dfea; font-size: 13px; font-weight: 600; }
+.content form input[type="date"],
+.content form input[type="text"],
+.content form input:not([type]),
+.content form select {
+  min-height: 42px;
+  max-width: 100%;
+  border-radius: 9px;
+}
+.content form button[type="submit"] { min-height: 42px; }
+.content input::placeholder { color: #9cacc0; }
+
+/* Table readability: striping is subtle to avoid rectangular dark blocks. */
+.content table { width: 100%; font-variant-numeric: tabular-nums; }
+.content table th {
+  color: #e9f2fb;
+  font-weight: 700;
+  text-align: left;
+  vertical-align: bottom;
+  background: #152132;
+}
+.content table td { vertical-align: middle; }
+.content table tbody tr:nth-child(even) { background-color: rgba(37, 54, 75, 0.2); }
+.content table tbody tr:hover { background-color: rgba(61, 80, 105, 0.24); }
+.content table th, .content table td { line-height: 1.45; }
+
+/* Cards and notices share the same visual rhythm. */
+.content .card { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+.content .notice { max-width: 100%; overflow-wrap: anywhere; }
+.content .notice strong { color: #f5f8fc; }
+.content .subtitle { overflow-wrap: anywhere; }
+
+@media (max-width: 950px) {
+  .content { overflow-x: auto; }
+  .content table { min-width: 620px; }
+}
+@media (max-width: 670px) {
+  .nav { scrollbar-width: thin; }
+  .navlink { min-height: 42px; }
+  .content { padding-top: 24px; }
+  .content form { gap: 12px !important; }
+  .content form label { min-width: min(180px, 100%); }
+  .content .title { line-height: 1.16; }
+  .content table { min-width: 620px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .navlink { transition: none; }
+}
+
+
+/* TRAX Build 09F.1 — visual consistency layer.
+   Additive only: no reporting, navigation, authentication or data changes. */
+
+:root {
+  --trax-focus: #ff848b;
+  --trax-row-border: #36465a;
+  --trax-control-bg: #111e2d;
+}
+
+/* Smooth, consistent navigation without altering active-route logic. */
+.navlink {
+  transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+  min-height: 43px;
+}
+.navlink.active {
+  background: #28384b;
+  font-weight: 700;
+}
+.navlink:focus-visible,
+.logoutbutton:focus-visible,
+.loginbutton:focus-visible,
+.content button:focus-visible,
+.content input:focus-visible,
+.content select:focus-visible {
+  outline: 2px solid var(--trax-focus);
+  outline-offset: 3px;
+}
+
+/* Consistent forms: applies to reporting filters while respecting inline styles. */
+.content form label { color: #d3dfea; font-size: 13px; font-weight: 600; }
+.content form input[type="date"],
+.content form input[type="text"],
+.content form input:not([type]),
+.content form select {
+  min-height: 42px;
+  max-width: 100%;
+  border-radius: 9px;
+}
+.content form button[type="submit"] { min-height: 42px; }
+.content input::placeholder { color: #9cacc0; }
+
+/* Table readability: striping is subtle to avoid rectangular dark blocks. */
+.content table { width: 100%; font-variant-numeric: tabular-nums; }
+.content table th {
+  color: #e9f2fb;
+  font-weight: 700;
+  text-align: left;
+  vertical-align: bottom;
+  background: #152132;
+}
+.content table td { vertical-align: middle; }
+.content table tbody tr:nth-child(even) { background-color: rgba(37, 54, 75, 0.2); }
+.content table tbody tr:hover { background-color: rgba(61, 80, 105, 0.24); }
+.content table th, .content table td { line-height: 1.45; }
+
+/* Cards and notices share the same visual rhythm. */
+.content .card { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+.content .notice { max-width: 100%; overflow-wrap: anywhere; }
+.content .notice strong { color: #f5f8fc; }
+.content .subtitle { overflow-wrap: anywhere; }
+
+@media (max-width: 950px) {
+  .content { overflow-x: auto; }
+  .content table { min-width: 620px; }
+}
+@media (max-width: 670px) {
+  .nav { scrollbar-width: thin; }
+  .navlink { min-height: 42px; }
+  .content { padding-top: 24px; }
+  .content form { gap: 12px !important; }
+  .content form label { min-width: min(180px, 100%); }
+  .content .title { line-height: 1.16; }
+  .content table { min-width: 620px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .navlink { transition: none; }
+}
+
+/* 09F.2 â€” Navigation and usability. Append-only to preserve 09F.1. */
+.trax-context {font-size:11px;line-height:1.45;color:#aabbd0;margin-top:4px;font-variant-numeric:tabular-nums}
+.trax-skip-link {position:fixed;z-index:11000;left:12px;top:-80px;background:#f1f5f9;color:#0b111b;padding:10px 14px;border-radius:8px;font-weight:700}
+.trax-skip-link:focus {top:12px}
+#main:focus {outline:none}
+.navlink {transition:background-color .14s ease,color .14s ease}
+.navlink:focus-visible,.loginbutton:focus-visible,.logoutbutton:focus-visible {outline:2px solid #ff8585;outline-offset:3px}
+@media(max-width:670px){.trax-context{max-width:230px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.topbar{height:auto;min-height:54px;padding-top:9px;padding-bottom:9px}}
+@media(prefers-reduced-motion:reduce){.navlink{transition:none}}

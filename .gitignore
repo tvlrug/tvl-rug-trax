@@ -1,0 +1,30 @@
+node_modules
+.next
+out
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+
+# TRAX local backups
+/backups/
+/TRAX-Backups/
+
+# Python environments and caches
+.venv/
+__pycache__/
+
+# Local temporary files
+*.bak
+*.tmp
+*.old
+
+# Operating system files
+Thumbs.db
+.DS_Store
+
+# Local Git ignore backup
+.gitignore.pre09F4A
+
+# Historical standalone page backup
+/TRAX_Overview_page.tsx
